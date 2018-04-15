@@ -48,18 +48,15 @@ def trans_it(text, lang_1, lang_2, lang_3):  # Uses translate.translate function
     print("SemiFluent: ", translated_string)
 
 
-#teststring = "With Jeff Bezos having $116.8 billion and the average person having 100 billion brain cells, Jeff Bezos literally has more money than sense."
-#trans_it(teststring, rolled_lang1, rolled_lang2, rolled_lang3)  # Function prints, doesn't return value. Tweak maybe
-
 subreddit = r.subreddit('ShowerThoughts')
 submissionList = []
-for submission in subreddit.hot(limit=2): # Increase this number if you want more posts fetched
-    if submission.stickied == 0: #Excludes stickied posts from printout
-        submissionList.append(submission) # submissionList is now a list of (10-stickies) Submission entities
+for submission in subreddit.hot(limit=2):  # Increase this number if you want more posts fetched
+    if submission.stickied == 0:  # Excludes stickied posts from printout
+        submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
 
 for submission in submissionList:
     post_title = submission.title
     # Add a step that re-rolls languages for every post
     trans_it(post_title, rolled_lang1, rolled_lang2, rolled_lang3)
     print('\n')
-    
+
