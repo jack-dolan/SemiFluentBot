@@ -42,21 +42,20 @@ rolled_lang3 = (lang_roller(langList[2]))
 
 
 def trans_it(text, lang_1, lang_2, lang_3):  # Uses translate.translate function and prints everything out nicely.
-    print("English > ", rolled_lang1[1], " > ", rolled_lang2[1], " > ", rolled_lang3[1], " > English")
-    print("Original: ", text)
-    translated_string = translate.translate(text, lang_1[0], lang_2[0], lang_3[0])
-    print("SemiFluent: ", translated_string)
+    trans_it_output = str(("English > " + rolled_lang1[1] + " > " + rolled_lang2[1] + " > " + rolled_lang3[1] + " > English") + ('\n') + ("Original: " + text) + ('\n') + ("SemiFluent: " + translate.translate(text, lang_1[0], lang_2[0], lang_3[0])) + ('\n'))
+    #Make the above line MUCH prettier
+    return trans_it_output
 
 
 subreddit = r.subreddit('ShowerThoughts')
 submissionList = []
-for submission in subreddit.hot(limit=2):  # Increase this number if you want more posts fetched
+for submission in subreddit.hot(limit=5):  # Increase this number if you want more posts fetched
     if submission.stickied == 0:  # Excludes stickied posts from printout
         submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
+        
 
 for submission in submissionList:
     post_title = submission.title
     # Add a step that re-rolls languages for every post
-    trans_it(post_title, rolled_lang1, rolled_lang2, rolled_lang3)
-    print('\n')
+    print(trans_it(post_title, rolled_lang1, rolled_lang2, rolled_lang3))
 
