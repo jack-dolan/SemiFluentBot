@@ -43,15 +43,18 @@ def trans_it(count, text, lang_1, lang_2, lang_3):  # Uses translate.translate f
     return trans_it_output
 
 
+submissionList = []
+
+
 def produce_output():
     subreddit = r.subreddit('ShowerThoughts')
-    submissionList = []
-    for submission in subreddit.hot(limit=10):  # Increase this number if you want more posts fetched
+    global submissionList
+    submissionList = []  # A list of submission objects
+    for submission in subreddit.hot(limit=5):  # Increase this number if you want more posts fetched
         if submission.stickied == 0:  # Excludes stickied posts from printout
             submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
-
     item_count = 0
-    options_list = []
+    options_list = []  # A list of Telegram-message-formatted submission objects
 
     for submission in submissionList:
         item_count += 1
@@ -66,4 +69,15 @@ def produce_output():
     return options_list
 
 
-# produce_output()
+def receive_input(choice_string):
+    chosen_list = [int(item) if item.isdigit() else item for item in choice_string.split(',')]
+    print(chosen_list)
+    chosen_submission_list = []
+    for num in chosen_list:
+        chosen_submission_list.append(submissionList[(num-1)])
+    print(submissionList)
+    print(chosen_submission_list)
+
+
+produce_output()
+receive_input('1,3')
