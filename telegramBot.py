@@ -3,6 +3,7 @@ import authentication
 import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler, ConversationHandler)
+import SemiFluentBot
 
 token = authentication.TELEGRAM_TOKEN
 
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # -----TEST VARIABLES AND STUFF-----------------
 # USE THIS FORMAT WHEN PASSING BACK OPTIONS
-translated_options = ['1\nThis is the original text\nThis is the translated text\n','2\nThis is the original text\nThis is the translated text\n','3\nThis is the original text\nThis is the translated text\n','4\nThis is the original text\nThis is the translated text\n']
+translated_options = SemiFluentBot.produce_output()
 # ----------------------
 
 CHOICES = 'placeholder'  # Probably don't do this
@@ -74,6 +75,7 @@ def main():
 
     # Start the Bot
     updater.start_polling()
+    logger.info("Start_Polling")
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
