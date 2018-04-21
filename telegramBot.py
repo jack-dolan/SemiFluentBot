@@ -6,6 +6,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
 import SemiFluentBot
 
 token = authentication.TELEGRAM_TOKEN
+loading_gif = "https://d13yacurqjgara.cloudfront.net/users/552485/screenshots/1769328/progress.gif"
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -17,8 +18,9 @@ CHOICES = 'placeholder'  # Probably don't do this
 def start(bot, update):
     logger.info("Received start command. Fetching posts.")
     update.message.reply_text('Let me fetch some posts. Hang on.')
-
+    update.message.reply_text(loading_gif)
     translated_options = SemiFluentBot.produce_output()
+
     update.message.reply_text(
         'Hello! Here are your options:\n\n')
     for option in translated_options:
@@ -50,6 +52,9 @@ def cancel(bot, update):
 def error(bot, update, error):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, error)
+
+    update.message.reply_text('Oh! Hit an error. Let me try to restart.')  # Added for timeout handling (?)
+    main()  # Added for timeout handling (?)
 
 
 def main():
