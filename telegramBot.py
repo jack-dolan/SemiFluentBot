@@ -11,20 +11,22 @@ token = authentication.TELEGRAM_TOKEN
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# -----TEST VARIABLES AND STUFF-----------------
-# USE THIS FORMAT WHEN PASSING BACK OPTIONS
-translated_options = SemiFluentBot.produce_output()
-# ----------------------
-
 CHOICES = 'placeholder'  # Probably don't do this
 
+
 def start(bot, update):
+    logger.info("Received start command. Fetching posts.")
+    update.message.reply_text('Let me fetch some posts. Hang on.')
+
+    translated_options = SemiFluentBot.produce_output()
     update.message.reply_text(
         'Hello! Here are your options:\n\n')
     for option in translated_options:
         update.message.reply_text(option)
     update.message.reply_text('Send /cancel to stop talking to me.\n\n'
         'What are your choices?')
+
+    logger.info("Sent all the posts successfully, waiting for input.")
 
     return CHOICES
 

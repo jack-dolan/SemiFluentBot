@@ -46,7 +46,7 @@ def trans_it(count, text, lang_1, lang_2, lang_3):  # Uses translate.translate f
 def produce_output():
     subreddit = r.subreddit('ShowerThoughts')
     submissionList = []
-    for submission in subreddit.hot(limit=6):  # Increase this number if you want more posts fetched
+    for submission in subreddit.hot(limit=10):  # Increase this number if you want more posts fetched
         if submission.stickied == 0:  # Excludes stickied posts from printout
             submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
 
