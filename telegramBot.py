@@ -10,10 +10,10 @@ token = authentication.TELEGRAM_TOKEN
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-#-----TEST VARIABLES AND STUFF-----------------
-# USE THIS FORMATE WHEN PASSING BACK OPTIONS
+# -----TEST VARIABLES AND STUFF-----------------
+# USE THIS FORMAT WHEN PASSING BACK OPTIONS
 translated_options = ['1\nThis is the original text\nThis is the translated text\n','2\nThis is the original text\nThis is the translated text\n','3\nThis is the original text\nThis is the translated text\n','4\nThis is the original text\nThis is the translated text\n']
-#----------------------
+# ----------------------
 
 CHOICES = 'placeholder'  # Probably don't do this
 
