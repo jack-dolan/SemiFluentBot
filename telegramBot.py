@@ -36,8 +36,10 @@ def start(bot, update):
 def choices(bot, update):
     user = update.message.from_user
     logger.info("Choices of %s: %s", user.first_name, update.message.text)
-    update.message.reply_text('You just said "' + update.message.text + '". \n My job here is done unless I messed up.')
-
+    logger.info('Sending to SFB.receive_input. Will be posted to reddit.')
+    update.message.reply_text('You just said "' + update.message.text + '". \n Posting to Reddit now, give me a second.\n')
+    SemiFluentBot.receive_input(update.message.text)
+    update.message.reply_text('Posted! (Probably)')
     return ConversationHandler.END
 
 
