@@ -46,3 +46,9 @@
 ##CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 ##OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 ##OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-------------------------------
+
+##python-telegram-bot:
+#python-telegram-bot was originally created by Leandro Toledo and is now maintained by Jannes Höke (@jh0ker on Telegram) and Noam Meltzer.
+#https://github.com/python-telegram-bot/python-telegram-bot
