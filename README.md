@@ -3,7 +3,10 @@ A small Reddit bot that takes Reddit text titles, translates them several times 
 
 Because the results from this bot aren't always great (e.g. the text is largely unchanged or changed so much it's not readable), a control mechanism is built in via a Telegram bot. The python translation bot sends its output to the user via Telegram, and then the user has the option to choose which (if any) of the presented options are good enough to actually post on Reddit.
 
-# Bugs
+## Flowchart
+![SemiFluentBot Flowchart](https://github.com/drummingjack2/SemiFluentBot/blob/cleanup/SFB_flowchart.png)
+
+## Bugs
 
 Currently SFB doesn't discern between Telegram users, so anyone who knows the username and commands can use it.
 
