@@ -26,6 +26,7 @@ You need a file in the project directory called `authentication.py` with the fol
     USERNAME = 'redditUsername'
     PASSWORD = 'redditPassword'
     TELEGRAM_TOKEN = 'insert_your_telegram_bot_token_here'
+    STARTUP_KEY = 'string_you_want_to_use_to_start_bot'
 
 
 ## Bugs

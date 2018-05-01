@@ -68,7 +68,7 @@ def main():
 
     # Add conversation handler with the state CHOICES
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points=[CommandHandler(authentication.STARTUP_KEY, start)],  # no longer using '/start' as entry point, restricts access to bot. Put whatever string you want in auth.py
 
         states={
             CHOICES: [MessageHandler(Filters.text, choices)]
