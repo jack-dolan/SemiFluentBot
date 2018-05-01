@@ -54,7 +54,7 @@ def produce_output():
     global postable_list
 
     submissionList = []  # A list of submission objects
-    for submission in subreddit.hot(limit=10):  # Increase this number if you want more posts fetched
+    for submission in subreddit.hot(limit=14):  # Increase this number if you want more posts fetched
         if submission.stickied == 0:  # Excludes stickied posts from printout
             submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
     item_count = 0
