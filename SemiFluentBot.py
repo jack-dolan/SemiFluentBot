@@ -29,15 +29,9 @@ def lang_roller(lang):   # Randomly chooses middle languages (ie EN > X > Y > Z 
         chosen_lang = ["ko", "Korean"]
     elif lang == 7:  # dutch
         chosen_lang = ["nl", "Dutch"]
-    elif lang == 8:  # bengali
-        chosen_lang = ["bn", "Bengali"]
-    elif lang == 9:  # bosnian
-        chosen_lang = ["bs", "Bosnian"]
-    elif lang == 10:  # urdu
-        chosen_lang = ["ur", "Urdu"]
-    elif lang == 11:  # irish
+    elif lang == 8:  # irish
         chosen_lang = ["ga", "Irish"]
-    elif lang == 12:  # punjabi
+    elif lang == 9:  # punjabi
         chosen_lang = ["pa", "Punjabi"]
     else:
         chosen_lang = ["es", "Spanish"]
@@ -64,7 +58,7 @@ def produce_output(subreddit_choice):
     global postable_list
 
     submissionList = []  # A list of submission objects
-    for submission in subreddit.hot(limit=14):  # Increase this number if you want more posts fetched
+    for submission in subreddit.hot(limit=11):  # Increase this number if you want more posts fetched
         if submission.stickied == 0:  # Excludes stickied posts from printout
             submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
     item_count = 0
@@ -74,7 +68,7 @@ def produce_output(subreddit_choice):
     for submission in submissionList:
         item_count += 1
         post_title = submission.title
-        langList = random.sample(range(1, 13), 3)
+        langList = random.sample(range(1, 10), 3)
         rolled_lang1 = (lang_roller(langList[0]))
         rolled_lang2 = (lang_roller(langList[1]))
         rolled_lang3 = (lang_roller(langList[2]))
