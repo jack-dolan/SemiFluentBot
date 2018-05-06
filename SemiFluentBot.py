@@ -57,8 +57,8 @@ submissionList = []  # A global list of submission objects, filled with top X po
 postable_list = []  # A global list of the above submissions, but formatted into reddit-postable strings
 
 
-def produce_output():
-    subreddit = r.subreddit('ShowerThoughts')
+def produce_output(subreddit_choice):
+    subreddit = r.subreddit(subreddit_choice)
 
     global submissionList
     global postable_list

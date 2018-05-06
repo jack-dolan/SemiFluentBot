@@ -12,21 +12,31 @@ loading_gif = "https://d13yacurqjgara.cloudfront.net/users/552485/screenshots/17
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-CHOICES = 'placeholder'  # Probably don't do this
-
+CHOICES, WHERE = range(2)
 
 def start(bot, update):
-    logger.info("Received start command. Fetching posts.")
+    reply_keyboard = [['ShowerThoughts', 'LifeProTips', 'UnethicalLifeProTips']]
+
+    logger.info("Received start command.")
+    update.message.reply_text('Hi! Send /cancel to stop talking to me.')
+    update.message.reply_text('Which subreddit should I look at?',
+                              reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+
+    return WHERE
+
+
+def where(bot, update):
+    logger.info("Received subreddit choice. Fetching posts.")
     update.message.reply_text('Let me fetch some posts. Hang on.')
     update.message.reply_text(loading_gif)
-    translated_options = SemiFluentBot.produce_output()
+    translated_options = SemiFluentBot.produce_output(update.message.text)
 
     update.message.reply_text(
         'Hello! Here are your options:\n\n')
     for option in translated_options:
         update.message.reply_text(option)
     update.message.reply_text('Send /cancel to stop talking to me.\n\n'
-        'What are your choices?')
+                              'What are your choices?')
 
     logger.info("Sent all the posts successfully, waiting for input.")
 
@@ -52,9 +62,7 @@ def cancel(bot, update):
 
 
 def error(bot, update, error):
-    """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', update, error)
-
+    # Just runs main() again when an error is caught.
     update.message.reply_text('Oh! Hit an error. Let me try to restart.')  # Added for timeout handling (?)
     main()  # Added for timeout handling (?)
 
@@ -66,12 +74,12 @@ def main():
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
-    # Add conversation handler with the state CHOICES
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler(authentication.STARTUP_KEY, start)],  # no longer using '/start' as entry point, restricts access to bot. Put whatever string you want in auth.py
 
         states={
-            CHOICES: [MessageHandler(Filters.text, choices)]
+            WHERE: [MessageHandler(Filters.text, where)],
+            CHOICES: [MessageHandler(Filters.text, choices)],
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
