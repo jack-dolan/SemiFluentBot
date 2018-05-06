@@ -31,7 +31,7 @@ You need a file in the project directory called `authentication.py` with the fol
 
 ## Bugs
 
-Currently SFB doesn't discern between Telegram users, so anyone who knows the username and commands can use it.
+~~Currently SFB doesn't discern between Telegram users, so anyone who knows the username and commands can use it.~~
 
 Occasionally the telegram service has timeout issues, but it doesn't appear to be related to the duration of the reddit post fetch. Not sure why it happens, but it is sometimes caught with my current barebones error catching.
 
