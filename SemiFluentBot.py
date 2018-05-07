@@ -74,7 +74,7 @@ def produce_output(subreddit_choice):
         rolled_lang3 = (lang_roller(langList[2]))
         # print(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
         options_list.append(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
-        postable_list.append(str("Here's that ShowerThought translated from English, to three random languages, "
+        postable_list.append(str("Here's that post translated from English, to three random languages, "
                                  "then back to English. [Code](https://github.com/drummingjack2/SemiFluentBot)\n\n" +
                                  "English > " + rolled_lang1[1] + " > " + rolled_lang2[1]
                                  + " > " + rolled_lang3[1] + " > English\n\n" + translate.translate(post_title,
