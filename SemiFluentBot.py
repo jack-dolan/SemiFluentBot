@@ -46,7 +46,7 @@ def trans_it(count, text, lang_1, lang_2, lang_3):  # Uses translate.translate f
                                                 translate.translate(text, lang_1[0], lang_2[0], lang_3[0])) + '\n')
     return trans_it_output
 
-
+#  TODO: Remove dependency on these global variables.
 submissionList = []  # A global list of submission objects, filled with top X posts
 postable_list = []  # A global list of the above submissions, but formatted into reddit-postable strings
 
@@ -72,7 +72,6 @@ def produce_output(subreddit_choice):
         rolled_lang1 = (lang_roller(langList[0]))
         rolled_lang2 = (lang_roller(langList[1]))
         rolled_lang3 = (lang_roller(langList[2]))
-        # print(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
         options_list.append(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
         postable_list.append(str("Here's that post translated from English, to three random languages, "
                                  "then back to English. [Code](https://github.com/drummingjack2/SemiFluentBot)\n\n" +
@@ -95,7 +94,3 @@ def receive_input(choice_string):
         current_submission.reply(comment)
         comment_count += 1
 
-
-
-# test123 = produce_output()
-# receive_input('1')
