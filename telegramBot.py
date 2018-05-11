@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 CHOICES, WHERE = range(2)
 
+
 def start(bot, update):
     reply_keyboard = [['ShowerThoughts', 'LifeProTips', 'UnethicalLifeProTips']]
 

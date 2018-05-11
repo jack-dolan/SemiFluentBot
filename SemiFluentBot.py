@@ -13,30 +13,17 @@ r = praw.Reddit(user_agent=user_agent, client_id=client_id, client_secret=client
                 username=username, password=password)
 r.read_only = False
 
-
-def lang_roller(lang):   # Randomly chooses middle languages (ie EN > X > Y > Z > EN)
-    if lang == 1:  # spanish
-        chosen_lang = ["es", "Spanish"]
-    elif lang == 2:  # french
-        chosen_lang = ["fr", "French"]
-    elif lang == 3:  # chinese (traditional)
-        chosen_lang = ["zh-TW", "Chinese (Traditional)"]
-    elif lang == 4:  # russian
-        chosen_lang = ["ru", "Russian"]
-    elif lang == 5:  # hebrew
-        chosen_lang = ["iw", "Hebrew"]
-    elif lang == 6:  # korean
-        chosen_lang = ["ko", "Korean"]
-    elif lang == 7:  # dutch
-        chosen_lang = ["nl", "Dutch"]
-    elif lang == 8:  # irish
-        chosen_lang = ["ga", "Irish"]
-    elif lang == 9:  # punjabi
-        chosen_lang = ["pa", "Punjabi"]
-    else:
-        chosen_lang = ["es", "Spanish"]
-
-    return chosen_lang
+language_list = {
+    "1": ["es", "Spanish"],
+    "2": ["fr", "French"],
+    "3": ["zh-TW", "Chinese (Traditional)"],
+    "4": ["ru", "Russian"],
+    "5": ["iw", "Hebrew"],
+    "6": ["ko", "Korean"],
+    "7": ["nl", "Dutch"],
+    "8": ["ga", "Irish"],
+    "9": ["pa", "Punjabi"]
+}
 
 
 def trans_it(count, text, lang_1, lang_2, lang_3):  # Uses translate.translate function
@@ -46,7 +33,7 @@ def trans_it(count, text, lang_1, lang_2, lang_3):  # Uses translate.translate f
                                                 translate.translate(text, lang_1[0], lang_2[0], lang_3[0])) + '\n')
     return trans_it_output
 
-#  TODO: Remove dependency on these global variables.
+#  TODO: Remove dependency on these global variables. Probably need to use classes
 submissionList = []  # A global list of submission objects, filled with top X posts
 postable_list = []  # A global list of the above submissions, but formatted into reddit-postable strings
 
@@ -63,21 +50,20 @@ def produce_output(subreddit_choice):
             submissionList.append(submission)  # submissionList is now a list of (10-stickies) Submission entities
     item_count = 0
     options_list = []  # A list of Telegram-message-formatted submission objects
-    postable_list = []
+    postable_list = []  # A list of Reddit-comment-formatted submission objects
 
     for submission in submissionList:
         item_count += 1
         post_title = submission.title
-        langList = random.sample(range(1, 10), 3)
-        rolled_lang1 = (lang_roller(langList[0]))
-        rolled_lang2 = (lang_roller(langList[1]))
-        rolled_lang3 = (lang_roller(langList[2]))
+        rand_num_list = random.sample(range(1, (len(language_list)+1)), 3)  # 3 random non-repeating number 1-(totalLangs)
+        rolled_lang1 = language_list[str(rand_num_list[0])]
+        rolled_lang2 = language_list[str(rand_num_list[1])]
+        rolled_lang3 = language_list[str(rand_num_list[2])]
         options_list.append(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
-        postable_list.append(str("Here's that post translated from English, to three random languages, "
-                                 "then back to English. [Code](https://github.com/drummingjack2/SemiFluentBot)\n\n" +
-                                 "English > " + rolled_lang1[1] + " > " + rolled_lang2[1]
-                                 + " > " + rolled_lang3[1] + " > English\n\n" + translate.translate(post_title,
-                                rolled_lang1[0], rolled_lang2[0], rolled_lang3[0])))
+        post_text = ("Here's that post translated from English, to three random languages, then back to English. [Code]"
+                     "(https://github.com/drummingjack2/SemiFluentBot)\n\nEnglish > {} > {} > {} > English\n\n{}")
+        postable_list.append(post_text.format(rolled_lang1[1], rolled_lang2[1], rolled_lang3[1],
+                            translate.translate(post_title, rolled_lang1[0], rolled_lang2[0], rolled_lang3[0])))
 
     return options_list
 
