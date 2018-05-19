@@ -1,6 +1,7 @@
 import praw
 import random
 import translate
+import os
 
 user_agent = os.environ['USER_AGENT']
 client_id = os.environ['CLIENT_ID']

@@ -4,6 +4,7 @@ import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler, ConversationHandler)
 import SemiFluentBot
+import os
 
 token = os.environ['TELEGRAM_TOKEN']
 loading_gif = "https://d13yacurqjgara.cloudfront.net/users/552485/screenshots/1769328/progress.gif"
