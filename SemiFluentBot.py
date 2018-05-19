@@ -1,13 +1,12 @@
 import praw
 import random
 import translate
-from authentication import USERNAME, PASSWORD, USER_AGENT, CLIENT_ID, CLIENT_SECRET
 
-user_agent = USER_AGENT
-client_id = CLIENT_ID
-client_secret = CLIENT_SECRET
-username = USERNAME
-password = PASSWORD
+user_agent = os.environ['USER_AGENT']
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
+username = os.environ['USERNAME']
+password = os.environ['PASSWORD']
 
 r = praw.Reddit(user_agent=user_agent, client_id=client_id, client_secret=client_secret,
                 username=username, password=password)

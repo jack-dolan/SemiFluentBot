@@ -1,11 +1,11 @@
 # Need to create a telegram bot, then interface with it here using the python-telegram-bot library
-import authentication
+
 import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler, ConversationHandler)
 import SemiFluentBot
 
-token = authentication.TELEGRAM_TOKEN
+token = os.environ['TELEGRAM_TOKEN']
 loading_gif = "https://d13yacurqjgara.cloudfront.net/users/552485/screenshots/1769328/progress.gif"
 
 # Enable logging
