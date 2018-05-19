@@ -77,7 +77,7 @@ def main():
     dp = updater.dispatcher
 
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler(authentication.STARTUP_KEY, start)],  # no longer using '/start' as entry point, restricts access to bot. Put whatever string you want in auth.py
+        entry_points=[CommandHandler(os.environ['STARTUP_KEY'], start)],  # no longer using '/start' as entry point, restricts access to bot. Put whatever string you want in auth.py
 
         states={
             WHERE: [MessageHandler(Filters.text, where)],
