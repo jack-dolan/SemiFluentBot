@@ -12,7 +12,7 @@ prawcore==0.14.0
 
 requests==2.18.4
 
-telegram==0.0.1
+python-telegram-bot==0.0.1
 
 update-checker==0.16
 
