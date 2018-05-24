@@ -31,7 +31,7 @@ You need a file in the project directory called `authentication.py` with the fol
 ## Heroku Deployment
 SemiFluentBot originally ran on a Raspberry Pi, but I wanted to learn how to deploy to a cloud platform, and I chose Heroku. If you're interested in the steps I took to get the program ready for deployment, here they are:
 * Remove `authentication.py` which previously contained variables such as reddit and python authentication passwords (detailed above). Instead, declare these variables as Heroku config variables, and call them programatically like so: `user_agent = os.environ['USER_AGENT']`. You'll need to import os for this.
-* Create a file called Procfile (no file extension) - This file tells the Heroku platform what command(s) to run in order to start your app. In this case, it's a one line file saying worker: `python telegramBot.py`
+* Create a file called Procfile (no file extension) - This file tells the Heroku platform what command(s) to run in order to start your app. In this case, it's a one line file saying `worker: python telegramBot.py`
 * Create a file called runtime.txt - This file just declares the version of python needed to run your app.
 * Create a file called requirements.txt - this is a file that declares all the dependencies your app has, so that the cloud platform can install them for you before the app starts running. Essentially, anythin you would 'pip install XXX' or otherwise install with a package manager to run your Python app, list it here.
 
