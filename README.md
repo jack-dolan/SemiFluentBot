@@ -5,8 +5,7 @@ Because the results from this bot aren't always great (e.g. the text is largely 
 
 ### Reviews:
 * "This is the bot we need, but not the one we deserve." *-/u/Robelius*
-* "This reads like a Trump quote" *-/u/freakierchicken*
-* "Good bot" *-75+ reddit users*
+* "Good bot" *-100+ reddit users*
 
 ## Usage
 - /start to start the bot after TB.py has been started successfully
