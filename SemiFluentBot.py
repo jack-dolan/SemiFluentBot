@@ -61,7 +61,7 @@ def produce_output(subreddit_choice):
         rolled_lang3 = language_list[str(rand_num_list[2])]
         options_list.append(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
         post_text = ("Here's that post translated from English, to three random languages, then back to English. [Code]"
-                     "(https://github.com/drummingjack2/SemiFluentBot)\n\nEnglish > {} > {} > {} > English\n\n{}")
+                     "(https://github.com/jack-dolan/SemiFluentBot)\n\nEnglish > {} > {} > {} > English\n\n{}")
         postable_list.append(post_text.format(rolled_lang1[1], rolled_lang2[1], rolled_lang3[1],
                             translate.translate(post_title, rolled_lang1[0], rolled_lang2[0], rolled_lang3[0])))
 
