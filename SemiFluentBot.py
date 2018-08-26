@@ -22,7 +22,7 @@ language_list = {
     "6": ["ko", "Korean"],
     "7": ["nl", "Dutch"],
     "8": ["ga", "Irish"],
-    "9": ["pa", "Punjabi"]
+    #  "9": ["pa", "Punjabi"]
 }
 
 
