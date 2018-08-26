@@ -1,13 +1,13 @@
 import praw
 import random
 import translate
-from authentication import USERNAME, PASSWORD, USER_AGENT, CLIENT_ID, CLIENT_SECRET
+import os
 
-user_agent = USER_AGENT
-client_id = CLIENT_ID
-client_secret = CLIENT_SECRET
-username = USERNAME
-password = PASSWORD
+user_agent = os.environ['USER_AGENT']
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
+username = os.environ['USERNAME']
+password = os.environ['PASSWORD']
 
 r = praw.Reddit(user_agent=user_agent, client_id=client_id, client_secret=client_secret,
                 username=username, password=password)
@@ -61,7 +61,7 @@ def produce_output(subreddit_choice):
         rolled_lang3 = language_list[str(rand_num_list[2])]
         options_list.append(trans_it(item_count, post_title, rolled_lang1, rolled_lang2, rolled_lang3))
         post_text = ("Here's that post translated from English, to three random languages, then back to English. [Code]"
-                     "(https://github.com/drummingjack2/SemiFluentBot)\n\nEnglish > {} > {} > {} > English\n\n{}")
+                     "(https://github.com/jack-dolan/SemiFluentBot)\n\nEnglish > {} > {} > {} > English\n\n{}")
         postable_list.append(post_text.format(rolled_lang1[1], rolled_lang2[1], rolled_lang3[1],
                             translate.translate(post_title, rolled_lang1[0], rolled_lang2[0], rolled_lang3[0])))
 

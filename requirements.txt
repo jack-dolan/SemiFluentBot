@@ -1,0 +1,3 @@
+googletrans
+praw
+python-telegram-bot
