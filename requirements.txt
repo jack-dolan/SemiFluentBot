@@ -1,3 +1,3 @@
-git+https://github.com/ssut/py-googletrans/tree/360f6027a613cabb57da93a861e750f48db572fd
+git+https://github.com/Guy-Dipietro-Bose/py-googletrans.git@360f6027a613cabb57da93a861e750f48db572fd
 praw
 python-telegram-bot
